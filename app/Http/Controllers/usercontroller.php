@@ -61,9 +61,6 @@ class usercontroller extends Controller
         $users = ['user'=>$user,         
         'totalfilleuls'=>$totalfilleuls,
         'niveauParrain'=>$niveauParrain];
-
-        
-        
         return view('user/index', $users);
     }
     
@@ -126,7 +123,6 @@ class usercontroller extends Controller
 
         if(!$user)
         {
-            
             return redirect()->back()->with('echec', "le lien de parainnage que vous utilisez n'est pas valide");
         }
 
@@ -223,9 +219,6 @@ class usercontroller extends Controller
             {
                 $parrain = null;
             }
-
-
-            
           }
         
     }
