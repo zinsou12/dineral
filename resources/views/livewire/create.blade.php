@@ -25,6 +25,7 @@
                     <div class='text-danger'>{{$message}}</div>
                     @enderror
                 </div>
+                
                   <div class="form-group">
                     <label>Telephone</label>
                     <input type="number" wire:model="telephone" class="form-control p_input" name="telephone" value="{{old('telephone')}}">
