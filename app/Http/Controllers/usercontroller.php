@@ -31,7 +31,6 @@ class usercontroller extends Controller
         if(session()->has('idParrain'))
         {
            
-
            $this->gestionFilleul(session('idParrain'), Auth::id());
         }
        /** session de l'utilisateur connecté */
