@@ -33,6 +33,10 @@ class User extends Authenticatable
         'type',
 
     ];
+
+    protected $attributes = [
+        'type'=>'register',
+    ];
     
 
     /**
