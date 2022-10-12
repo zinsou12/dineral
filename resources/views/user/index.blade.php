@@ -156,7 +156,7 @@
                         <tbody>
                           <tr>                            
                             <td>
-                              <span class="ps-2" id="lien">{{config('app.url')}}register/{{Auth::user()->login}}/{{Auth::id()}}</span>
+                              <span class="ps-2" id="lien">{{config('app.url')}}{{Auth::user()->type}}/{{Auth::user()->login}}/{{Auth::id()}}</span>
                             <button id="copier">copier</button>
                             </td>                           
                           </tr>
