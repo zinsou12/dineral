@@ -30,7 +30,7 @@ class User extends Authenticatable
         'gains_vente',
         'niveau_actuel',
         'investissement',
-        'parrain_id',
+        'type',
 
     ];
     
