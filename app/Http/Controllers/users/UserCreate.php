@@ -84,6 +84,7 @@ class UserCreate extends Controller
             'login'=> $request->login,
             'sexe'=>$request->sexe,
             'password'=>Hash::make($request->password),
+            'type'=>'create',
             ]));
 
         return redirect()->intended('compte');
