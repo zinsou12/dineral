@@ -69,6 +69,7 @@
                             <th> Sex </th>
                             <th> Gain inscription </th>
                             <th> Gain ventes </th>
+                            <th> Type </th>
                             <th> Statut payement  </th>
                           </tr>
                         </thead>
@@ -83,6 +84,7 @@
                             <td> {{$user->sexe}} </td>
                             <td> {{$user->gains}}</td>
                             <td> {{$user->gains_vente}} </td>
+                            <td> {{$user->type}} </td>
                             <td>
                               @if($user->investissement>0)
                              <div class="badge badge-outline-success">oui</div>
