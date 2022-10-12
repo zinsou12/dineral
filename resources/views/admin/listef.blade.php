@@ -49,7 +49,7 @@
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_navbar.html -->
-        @livewire('seach-user')
+       <!-- @livewire('seach-user')-->
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">     
@@ -69,7 +69,7 @@
                             <th> Sex </th>
                             <th> Gain inscription </th>
                             <th> Gain ventes </th>
-                            <th> Type </th>
+                            <th> type </th>
                             <th> Statut payement  </th>
                           </tr>
                         </thead>
