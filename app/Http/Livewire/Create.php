@@ -85,10 +85,11 @@ class Create extends Component
             'login'=> $this->login,
             'sexe'=>$this->sexe,
             'password'=>Hash::make($this->password),
+            'type'=>'create',
             ]));
 
             $this->reset();
-        return redirect()->intended('compte');
+        return redirect()->route('compte');
     
     }
     public function render()
