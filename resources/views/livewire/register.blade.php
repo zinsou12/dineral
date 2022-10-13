@@ -1,7 +1,5 @@
 <div>
-@if(session()->has('echec'))
-    <div class='alert alert-danger'>{{session('echec')}}</div>
-  @endif
+
   
   <form method='post' wire:submit.prevent="register()">
                   @csrf()
