@@ -70,4 +70,8 @@
                   <p class="sign-up text-center">Avez vous deja un compte?<a href="{{route('login')}}"> Connexion</a></p>
                   <p class="terms">Acceptez vous vous lels termmes et accord?<a href="#"> Termes & Conditions</a></p>
                 </form>
+
+                @if(session()->has('echec'))
+    <div class='alert alert-danger'>{{session('echec')}}</div>
+  @endif
 </div>
