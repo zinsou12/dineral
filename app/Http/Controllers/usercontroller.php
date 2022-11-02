@@ -17,14 +17,16 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class usercontroller extends Controller
 {
+
+   
     
     /**
      * Page du compte de l'utilisateur
      */
     public function compte()
     {  
-             
-       /**
+
+              /**
          * on verifie si une session arrive avec un id parrain
          */
 
@@ -56,11 +58,24 @@ class usercontroller extends Controller
         * niveau actuel
         */
 
+        
+
         $niveauParrain = $filleuls->max('niveau_id');
+
+        $niveauStatus = match($niveauParrain){
+            1=>'distributeur',
+            2=>'Senior distributeur',
+            3=>'Directeur',
+            4=>'Bronze Directeur',
+            5=>'Silver Directeur',
+            6=>'Gold directeur',
+            7=>'actionnaire'
+
+        };
 
         $users = ['user'=>$user,         
         'totalfilleuls'=>$totalfilleuls,
-        'niveauParrain'=>$niveauParrain];
+        'niveauParrain'=>$niveauStatus];
         return view('user/index', $users);
     }
     
@@ -238,23 +253,43 @@ class usercontroller extends Controller
  * 
  */
 
- private function gainPourcentage(User $user, int $niveau)
+ private function gainPourcentage(User $user, int $niveau,)
  {
     /*
     calcul du pourcentage gagné sur chaque filleul en fonction de son
      niveau du filleull
     */
-    switch($niveau)
-    {
-        case 1:return ($user->investissement*20)/100;
-        case 2:return ($user->investissement*3)/100;
-        case 3: return ($user->investissement*2)/100;
-        case 4: return $user->investissement/100;
-        case 5: return ($user->investissement*0.5)/100;
-        case 6: return ($user->investissement*0.35)/100;
-        case 7: return ($user->investissement*0.25)/100;
 
+    if($user->type == "register")
+    {
+                switch($niveau)
+            {
+                case 1:return ($user->investissement*20)/100;
+                case 2:return ($user->investissement*3)/100;
+                case 3: return ($user->investissement*2)/100;
+                case 4: return $user->investissement/100;
+                case 5: return ($user->investissement*0.5)/100;
+                case 6: return ($user->investissement*0.35)/100;
+                case 7: return ($user->investissement*0.25)/100;
+
+            }
     }
+
+    if($user->type == "create")
+    {
+            switch($niveau)
+        {
+            case 1:return ($user->investissement*20)/100;
+            case 2:return ($user->investissement*7)/100;
+            case 3: return ($user->investissement*3)/100;
+            case 4: return $user->investissement*2/100;
+            case 5: return ($user->investissement*1.5)/100;
+            case 6: return ($user->investissement*1.2)/100;
+            case 7: return ($user->investissement*1)/100;
+
+        }
+    }
+    
                     
  }
 
@@ -313,16 +348,35 @@ class usercontroller extends Controller
 
         private function ventePourcentage(User $user, int $niveau)
         {
-           switch($niveau)
+
+            if($user->type == "register")
+            {
+                switch($niveau)
+                {
+                    case 1: return $user->vente_mensuelle/100;
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5: return ($user->vente_mensuelle*0.25)/100;
+                    case 6:
+                    case 7 :($user->vente*0.1)/100;
+                };
+            }
+
+            if($user->type == "create")
+            {
+                switch($niveau)
             {
                 case 1: return $user->vente_mensuelle/100;
-                case 2:
-                case 3:
-                case 4:
-                case 5: return ($user->vente_mensuelle*0.25)/100;
-                case 6:
+                case 2: return $user->vente_mensuelle*0.5/100;
+                case 3: return $user->vente_mensuelle*0.3/100;
+                case 4: return $user->vente_mensuelle*0.2/100;
+                case 5: return ($user->vente_mensuelle*0.15)/100;
+                case 6: 
                 case 7 :($user->vente*0.1)/100;
             };
+            }
+           
         }
 
         private function calculGainvente(User $user)
