@@ -394,13 +394,13 @@ class Admin extends Controller
           {
                   switch($niveau)
               {
-                  case 1: return $user->vente_mensuelle/100;
-                  case 2: return $user->vente_mensuelle*0.5/100;
-                  case 3: return $user->vente_mensuelle*0.3/100;
-                  case 4: return $user->vente_mensuelle*0.2/100;
-                  case 5: return ($user->vente_mensuelle*0.15)/100;
+                  case 1: return $user->vente_mensuelle*4/100;
+                  case 2: return $user->vente_mensuelle*2/100;
+                  case 3: return $user->vente_mensuelle*1.5/100;
+                  case 4:
+                  case 5: 
                   case 6: 
-                  case 7 :($user->vente*0.1)/100;
+                  case 7 :return $user->vente/100;
               }
           }
         }
