@@ -18,6 +18,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class usercontroller extends Controller
 {
 
+
+  
    
     
     /**
@@ -25,6 +27,9 @@ class usercontroller extends Controller
      */
     public function compte()
     {  
+
+       
+        
 
               /**
          * on verifie si une session arrive avec un id parrain
@@ -62,7 +67,17 @@ class usercontroller extends Controller
 
         $niveauParrain = $filleuls->max('niveau_id');
 
-        $niveauStatus = match($niveauParrain){
+        $niveauStatus = $this->status($niveauParrain);
+
+        $users = ['user'=>$user,         
+        'totalfilleuls'=>$totalfilleuls,
+        'niveauParrain'=>$niveauStatus];
+        return view('user/index', $users);
+    }
+
+    private function status(int $niveauParrain)
+    {
+        return match($niveauParrain){
             1=>'distributeur',
             2=>'Senior distributeur',
             3=>'Directeur',
@@ -73,10 +88,6 @@ class usercontroller extends Controller
 
         };
 
-        $users = ['user'=>$user,         
-        'totalfilleuls'=>$totalfilleuls,
-        'niveauParrain'=>$niveauStatus];
-        return view('user/index', $users);
     }
     
     public function index()
